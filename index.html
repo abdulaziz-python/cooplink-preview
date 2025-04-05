@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cooplink - Professional marketplace for selling code">
+    <meta name="theme-color" content="#000000">
+    <title>Cooplink | Professional Code Marketplace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Custom Properties for theming */
+        :root {
+            /* Colors */
+            --color-background: #000000;
+            --color-surface: #0F0F0F;
+            --color-surface-elevated: #1A1A1A;
+            --color-border: #2A2A2A;
+            
+            --color-primary: #624CF5;
+            --color-primary-light: #7B67FF;
+            --color-secondary: #00C2FF;
+            --color-secondary-light: #33CFFF;
+            --color-accent: #00F090;
+            
+            --color-text: #FFFFFF;
+            --color-text-muted: rgba(255, 255, 255, 0.7);
+            --color-text-dimmed: rgba(255, 255, 255, 0.5);
+            
+            --color-success: #00F090;
+            --color-warning: #FFB800;
+            --color-error: #FF4A4A;
+            --color-telegram: #26A5E4;
+
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #624CF5 0%, #00C2FF 100%);
+            --gradient-hero: linear-gradient(90deg, #290742 0%, #AF1E3A 33%, #CB8D2A 66%, #1D7E45 100%);
+            --gradient-card: linear-gradient(135deg, rgba(98, 76, 245, 0.1) 0%, rgba(0, 194, 255, 0.1) 100%);
+            --gradient-button: linear-gradient(90deg, #624CF5 0%, #00C2FF 100%);
+            
+            /* Typography */
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+            --font-size-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+            --font-size-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+            --font-size-lg: clamp(1.125rem, 1rem + 0.625vw, 1.25rem);
+            --font-size-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+            --font-size-2xl: clamp(1.5rem, 1.3rem + 1vw, 1.875rem);
+            --font-size-3xl: clamp(1.875rem, 1.6rem + 1.375vw, 2.25rem);
+            --font-size-4xl: clamp(2.25rem, 1.9rem + 1.75vw, 3rem);
+            --font-size-5xl: clamp(3rem, 2.5rem + 2.5vw, 4rem);
+            --font-size-6xl: clamp(4rem, 3rem + 5vw, 8rem);
+            
+            /* Spacing */
+            --space-1: clamp(0.25rem, 0.2rem + 0.25vw, 0.5rem);
+            --space-2: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+            --space-3: clamp(0.75rem, 0.6rem + 0.75vw, 1rem);
+            --space-4: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+            --space-5: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+            --space-6: clamp(2rem, 1.6rem + 2vw, 3rem);
+            --space-7: clamp(3rem, 2.4rem + 3vw, 4rem);
+            --space-8: clamp(4rem, 3.2rem + 4vw, 6rem);
+            --space-9: clamp(6rem, 4.8rem + 6vw, 10rem);
+            
+            /* Layout */
+            --container-width: min(100% - 3rem, 1280px);
+            --header-height: 5rem;
+            --border-radius-sm: 0.25rem;
+            --border-radius: 0.5rem;
+            --border-radius-lg: 0.75rem;
+            --border-radius-xl: 1rem;
+            --border-radius-2xl: 1.5rem;
+            
+            /* Transitions */
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            --shadow-glow: 0 0 20px rgba(98, 76, 245, 0.5);
+            
+            /* Z-index layers */
+            --z-negative: -1;
+            --z-elevate: 1;
+            --z-dropdown: 10;
+            --z-sticky: 100;
+            --z-drawer: 200;
+            --z-modal: 300;
+            --z-popover: 400;
+            --z-toast: 500;
+            --z-tooltip: 600;
+        }
+
+        /* Base Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height);
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        body {
+            font-family: var(--font-family);
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: var(--color-background);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        img, picture, video, canvas, svg {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        input, button, textarea, select {
+            font: inherit;
+        }
+
+        p, h1, h2, h3, h4, h5, h6 {
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: var(--font-size-5xl);
+            letter-spacing: -0.04em;
+        }
+
+        h2 {
+            font-size: var(--font-size-4xl);
+            letter-spacing: -0.03em;
+        }
+
+        h3 {
+            font-size: var(--font-size-3xl);
+            letter-spacing: -0.02em;
+        }
+
+        h4 {
+            font-size: var(--font-size-2xl);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        /* Utility Classes */
+        .container {
+            width: var(--container-width);
+            margin-inline: auto;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        .text-gradient {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        /* Layout Components */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: var(--z-sticky);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background-color: rgba(0, 0, 0, 0.6);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-weight: 800;
+            font-size: var(--font-size-xl);
+            color: var(--color-text);
+            position: relative;
+            z-index: var(--z-elevate);
+        }
+
+        .logo-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: var(--border-radius);
+            font-weight: 700;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: var(--space-6);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--space-5);
+        }
+
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+            color: var(--color-text-muted);
+            transition: color var(--transition-normal);
+            padding: var(--space-2) var(--space-1);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width var(--transition-normal);
+        }
+
+        .nav-link:hover {
+            color: var(--color-text);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: var(--space-3);
+        }
+
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: var(--space-1);
+            padding: var(--space-1);
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: var(--space-1) var(--space-2);
+            border-radius: var(--border-radius-sm);
+            font-weight: 500;
+            font-size: var(--font-size-xs);
+            color: var(--color-text-dimmed);
+            transition: all var(--transition-normal);
+        }
+
+        .lang-btn.active {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .lang-btn:hover:not(.active) {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-text);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 2.5rem;
+            height: 2.5rem;
+            position: relative;
+            z-index: var(--z-elevate);
+        }
+
+        .mobile-menu-icon {
+            position: relative;
+            width: 1.5rem;
+            height: 2px;
+            background-color: var(--color-text);
+            margin: 0 auto;
+            transition: all var(--transition-normal);
+        }
+
+        .mobile-menu-icon::before,
+        .mobile-menu-icon::after {
+            content: '';
+            position: absolute;
+            width: 1.5rem;
+            height: 2px;
+            background-color: var(--color-text);
+            transition: all var(--transition-normal);
+        }
+
+        .mobile-menu-icon::before {
+            transform: translateY(-8px);
+        }
+
+        .mobile-menu-icon::after {
+            transform: translateY(8px);
+        }
+
+        .mobile-menu-btn.active .mobile-menu-icon {
+            background-color: transparent;
+        }
+
+        .mobile-menu-btn.active .mobile-menu-icon::before {
+            transform: rotate(45deg);
+        }
+
+        .mobile-menu-btn.active .mobile-menu-icon::after {
+            transform: rotate(-45deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding: var(--space-9) 0 var(--space-8);
+            margin-top: var(--header-height);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-hero);
+            z-index: var(--z-negative);
+            opacity: 0.6;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 0%, var(--color-background) 80%);
+            z-index: var(--z-negative);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            padding: var(--space-2) var(--space-4);
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-text);
+            font-weight: 500;
+            font-size: var(--font-size-sm);
+            border-radius: var(--border-radius-xl);
+            margin-bottom: var(--space-5);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-title {
+            font-size: var(--font-size-6xl);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: var(--space-6);
+            letter-spacing: -0.04em;
+        }
+
+        .hero-description {
+            color: var(--color-text-muted);
+            margin-bottom: var(--space-6);
+            font-size: var(--font-size-xl);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: var(--space-4);
+            margin-top: var(--space-6);
+            justify-content: center;
+        }
+
+        .hero-image-container {
+            max-width: 900px;
+            margin: var(--space-8) auto 0;
+            position: relative;
+            border-radius: var(--border-radius-2xl);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: var(--border-radius-2xl);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-2);
+            padding: var(--space-4) var(--space-6);
+            border-radius: var(--border-radius-xl);
+            font-weight: 600;
+            font-size: var(--font-size-base);
+            transition: all var(--transition-normal);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+
+        .btn:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(100, 100);
+                opacity: 0;
+            }
+        }
+
+        .btn-primary {
+            background: var(--gradient-button);
+            color: white;
+            box-shadow: 0 0 20px rgba(98, 76, 245, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(98, 76, 245, 0.5);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-text);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(0);
+        }
+
+        .btn-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: var(--space-9) 0;
+            background-color: var(--color-surface);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(98, 76, 245, 0.15), transparent 25%),
+                radial-gradient(circle at 80% 70%, rgba(0, 194, 255, 0.1), transparent 25%);
+            z-index: var(--z-negative);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--space-8);
+        }
+
+        .section-subtitle {
+            display: inline-block;
+            padding: var(--space-1) var(--space-3);
+            background: var(--gradient-primary);
+            color: white;
+            font-weight: 600;
+            font-size: var(--font-size-xs);
+            border-radius: var(--border-radius-lg);
+            margin-bottom: var(--space-3);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .section-title {
+            margin-bottom: var(--space-4);
+            color: var(--color-text);
+        }
+
+        .section-description {
+            color: var(--color-text-muted);
+            font-size: var(--font-size-lg);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+            gap: var(--space-6);
+        }
+
+        .feature-card {
+            background-color: var(--color-surface-elevated);
+            border-radius: var(--border-radius-xl);
+            padding: var(--space-6);
+            transition: all var(--transition-normal);
+            border: 1px solid var(--color-border);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-card);
+            opacity: 0;
+            transition: opacity var(--transition-normal);
+            z-index: -1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(98, 76, 245, 0.5);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: var(--border-radius-lg);
+            background: var(--gradient-primary);
+            color: white;
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--space-5);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .feature-title {
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--space-3);
+            color: var(--color-text);
+        }
+
+        .feature-description {
+            color: var(--color-text-muted);
+            margin-top: auto;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: var(--space-9) 0;
+            position: relative;
+            background-color: var(--color-background);
+            overflow: hidden;
+        }
+
+        .how-it-works::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 80% 20%, rgba(98, 76, 245, 0.15), transparent 25%),
+                radial-gradient(circle at 20% 80%, rgba(0, 194, 255, 0.1), transparent 25%);
+            z-index: var(--z-negative);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+            gap: var(--space-7);
+            counter-reset: step;
+        }
+
+        .step {
+            position: relative;
+            padding-left: 4rem;
+        }
+
+        .step::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3rem;
+            height: 3rem;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: var(--font-size-xl);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .step-title {
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--space-3);
+            color: var(--color-text);
+        }
+
+        .step-description {
+            color: var(--color-text-muted);
+        }
+
+        /* Telegram Section */
+        .telegram-section {
+            padding: var(--space-9) 0;
+            background-color: var(--color-surface);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .telegram-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(98, 76, 245, 0.25), transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(0, 194, 255, 0.2), transparent 30%);
+            z-index: var(--z-negative);
+        }
+
+        .telegram-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr));
+            gap: var(--space-6);
+            margin-top: var(--space-7);
+        }
+
+        .telegram-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: var(--border-radius-xl);
+            padding: var(--space-6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all var(--transition-normal);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .telegram-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .telegram-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50%;
+            background-color: var(--color-telegram);
+            color: white;
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--space-5);
+            box-shadow: 0 0 20px rgba(38, 165, 228, 0.5);
+        }
+
+        .telegram-title {
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--space-3);
+            color: white;
+        }
+
+        .telegram-description {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: var(--space-5);
+        }
+
+        .telegram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+            color: white;
+            font-weight: 500;
+            padding: var(--space-3) var(--space-4);
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius-lg);
+            transition: all var(--transition-normal);
+            margin-top: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .telegram-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--color-surface);255,255, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--color-surface);
+            color: white;
+            padding: var(--space-8) 0 var(--space-4);
+            border-top: 1px solid var(--color-border);
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+            gap: var(--space-7);
+            margin-bottom: var(--space-7);
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-weight: 800;
+            font-size: var(--font-size-xl);
+            color: white;
+        }
+
+        .footer-description {
+            color: var(--color-text-muted);
+            max-width: 24rem;
+        }
+
+        .footer-heading {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--space-4);
+            color: white;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+        }
+
+        .footer-link {
+            color: var(--color-text-muted);
+            transition: color var(--transition-normal);
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background-color: var(--color-border);
+            margin-bottom: var(--space-4);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--color-text-dimmed);
+            font-size: var(--font-size-sm);
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: var(--space-4);
+        }
+
+        .footer-legal-link {
+            color: var(--color-text-dimmed);
+            transition: color var(--transition-normal);
+        }
+
+        .footer-legal-link:hover {
+            color: white;
+        }
+
+        /* Code Block */
+        .code-block {
+            background-color: var(--color-surface-elevated);
+            border-radius: var(--border-radius-xl);
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+            margin: var(--space-7) 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .code-header {
+            background-color: var(--color-surface);
+            padding: var(--space-3) var(--space-4);
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .code-controls {
+            display: flex;
+            gap: var(--space-2);
+        }
+
+        .code-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .code-dot-red {
+            background-color: var(--color-error);
+        }
+
+        .code-dot-yellow {
+            background-color: var(--color-warning);
+        }
+
+        .code-dot-green {
+            background-color: var(--color-success);
+        }
+
+        .code-title {
+            color: var(--color-text-muted);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+        }
+
+        .code-content {
+            padding: var(--space-4);
+            overflow-x: auto;
+        }
+
+        .code-line {
+            display: flex;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: var(--font-size-sm);
+            line-height: 1.6;
+        }
+
+        .code-line-number {
+            color: var(--color-text-dimmed);
+            padding-right: var(--space-3);
+            text-align: right;
+            user-select: none;
+            min-width: 2.5rem;
+        }
+
+        .code-line-content {
+            color: var(--color-text-muted);
+        }
+
+        .code-keyword {
+            color: var(--color-primary-light);
+        }
+
+        .code-string {
+            color: var(--color-success);
+        }
+
+        .code-function {
+            color: var(--color-secondary);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 64em) {
+            .hero-content {
+                max-width: 800px;
+            }
+
+            .hero-title {
+                font-size: clamp(3rem, 6vw, 5rem);
+            }
+        }
+
+        @media (max-width: 48em) {
+            .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .nav {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                background-color: var(--color-surface);
+                padding: var(--space-9) var(--space-5) var(--space-5);
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-6);
+                transform: translateX(100%);
+                transition: transform var(--transition-normal);
+                z-index: var(--z-drawer);
+                overflow-y: auto;
+            }
+
+            .nav.active {
+                transform: translateX(0);
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: var(--space-5);
+                width: 100%;
+            }
+
+            .nav-link {
+                color: var(--color-text-muted);
+                font-size: var(--font-size-xl);
+                padding: var(--space-2) 0;
+                display: block;
+                border-bottom: 1px solid var(--color-border);
+            }
+
+            .nav-link::after {
+                display: none;
+            }
+
+            .nav-link:hover {
+                color: var(--color-text);
+            }
+
+            .lang-switcher {
+                margin-top: auto;
+                background-color: rgba(255, 255, 255, 0.05);
+                border-color: rgba(255, 255, 255, 0.1);
+                align-self: center;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                max-width: 360px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: var(--space-3);
+                text-align: center;
+            }
+
+            .footer-legal {
+                flex-direction: column;
+                gap: var(--space-3);
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 36em) {
+            .steps {
+                gap: var(--space-7);
+            }
+
+            .step {
+                padding-left: 0;
+                padding-top: 4rem;
+            }
+
+            .step::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .step-title {
+                text-align: center;
+            }
+
+            .step-description {
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-5 {
+            animation-delay: 0.5s;
+        }
+
+        /* Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--color-primary);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Print Styles */
+        @media print {
+            .header, .footer {
+                display: none;
+            }
+
+            body {
+                color: black;
+                background: white;
+            }
+
+            .container {
+                width: 100%;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo" aria-label="Cooplink homepage">
+                <div class="logo-icon">C</div>
+                <span>Cooplink</span>
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu" aria-expanded="false">
+                <div class="mobile-menu-icon"></div>
+            </button>
+            <nav class="nav" id="mainNav">
+                <div class="nav-links">
+                    <a href="#features" class="nav-link" data-uz="Imkoniyatlar" data-ru="Возможности">Imkoniyatlar</a>
+                    <a href="#how-it-works" class="nav-link" data-uz="Qanday ishlaydi" data-ru="Как это работает">Qanday ishlaydi</a>
+                    <a href="#telegram" class="nav-link" data-uz="Telegram" data-ru="Телеграм">Telegram</a>
+                </div>
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="uz" aria-pressed="true">UZ</button>
+                    <button class="lang-btn" data-lang="ru" aria-pressed="false">RU</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-eyebrow fade-in" data-uz="Kod Marketplace" data-ru="Код Маркетплейс">Kod Marketplace</div>
+                    <h1 class="hero-title fade-in delay-1">
+                        <span data-uz="Professional" data-ru="Профессиональный">Professional</span>
+                        <span class="text-gradient" data-uz="Kod Sotish" data-ru="Маркетплейс">Kod Sotish</span>
+                        <span data-uz="Platformasi" data-ru="Для Кода">Platformasi</span>
+                    </h1>
+                    <p class="hero-description fade-in delay-2" data-uz="Cooplink - bu dasturchilar uchun o'z kodlarini sotish va daromad topish uchun yaratilgan zamonaviy marketplace" data-ru="Cooplink - это современный маркетплейс, созданный для разработчиков, чтобы продавать свой код и зарабатывать">Cooplink - bu dasturchilar uchun o'z kodlarini sotish va daromad topish uchun yaratilgan zamonaviy marketplace</p>
+                    <div class="hero-cta fade-in delay-3">
+                        <a href="https://t.me/cooplinkbot" class="btn btn-primary" id="ctaBot" data-uz="Telegram bot orqali sotish" data-ru="Продавать через Telegram бот">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4"></path>
+                            </svg>
+                            <span data-uz="Telegram bot orqali sotish" data-ru="Продавать через Telegram бот">Telegram bot orqali sotish</span>
+                        </a>
+                        <a href="https://t.me/cooplink" class="btn btn-secondary" id="ctaChannel" data-uz="Kanalga qo'shilish" data-ru="Присоединиться к каналу">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M2 16s3-5.5 8-5.5m0 0c5 0 8 5.5 8 5.5m-8-5.5v-7.5a4 4 0 0 1 4 4m-4-4a4 4 0 0 0-4 4m0 .5v3"></path>
+                            </svg>
+                            <span data-uz="Kanalga qo'shilish" data-ru="Присоединиться к каналу">Kanalga qo'shilish</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-image-container fade-in delay-4">
+                    <div class="code-block">
+                        <div class="code-header">
+                            <div class="code-controls">
+                                <div class="code-dot code-dot-red"></div>
+                                <div class="code-dot code-dot-yellow"></div>
+                                <div class="code-dot code-dot-green"></div>
+                            </div>
+                            <div class="code-title">cooplink-marketplace.js</div>
+                        </div>
+                        <div class="code-content">
+                            <div class="code-line">
+                                <span class="code-line-number">1</span>
+                                <span class="code-line-content"><span class="code-keyword">import</span> { createMarketplace } <span class="code-keyword">from</span> <span class="code-string">'cooplink/core'</span>;</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-line-number">2</span>
+                                <span class="code-line-content"><span class="code-keyword">import</span> { paymentProcessor } <span class="code-keyword">from</span> <span class="code-string">'cooplink/payments'</span>;</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-line-number">3</span>
+                                <span class="code-line-content"></span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-line-number">4</span>
+                                <span class="code-line-content"><span class="code-keyword">const</span> <span class="code-function">setupCodeMarketplace</span> = <span class="code-keyword">async</span> () => {</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-line-number">5</span>
+                                <span class="code-line-content">  <span class="code-keyword">const</span> marketplace = <span class="code-keyword">await</span> createMarketplace({</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-line-number">6</span>
+                                <span class="code-line-content">    name: <span class="code-string">'Cooplink'</span>,</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-line-number">7</span>
+                                <span class="code-line-content">    description: <span class="code-string">'Professional code selling platform'</span>,</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-line-number">8</span>
+                                <span class="code-line-content">    supportedLanguages: [<span class="code-string">'uz'</span>, <span class="code-string">'ru'</span>],</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-line-number">9</span>
+                                <span class="code-line-content">    paymentProcessor,</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-line-number">10</span>
+                                <span class="code-line-content">  });</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-line-number">11</span>
+                                <span class="code-line-content"></span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-line-number">12</span>
+                                <span class="code-line-content">  <span class="code-keyword">await</span> marketplace.connect(<span class="code-string">'telegram'</span>);</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-line-number">13</span>
+                                <span class="code-line-content">  <span class="code-keyword">return</span> marketplace;</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-line-number">14</span>
+                                <span class="code-line-content">};</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-line-number">15</span>
+                                <span class="code-line-content"></span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-line-number">16</span>
+                                <span class="code-line-content"><span class="code-function">setupCodeMarketplace</span>().then(<span class="code-function">marketplace</span> => {</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-line-number">17</span>
+                                <span class="code-line-content">  console.log(<span class="code-string">'Cooplink marketplace is online!'</span>);</span>
+                            </div>
+                            <div class="code-line">
+                                <span class="code-line-number">18</span>
+                                <span class="code-line-content">});</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <div class="section-subtitle" data-uz="Imkoniyatlar" data-ru="Возможности">Imkoniyatlar</div>
+                    <h2 class="section-title" data-uz="Cooplink imkoniyatlari" data-ru="Возможности Cooplink">Cooplink imkoniyatlari</h2>
+                    <p class="section-description" data-uz="Kodingizni sotish va daromad topish uchun eng yaxshi platforma" data-ru="Лучшая платформа для продажи вашего кода и заработка">Kodingizni sotish va daromad topish uchun eng yaxshi platforma</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"></path>
+                                <path d="M12 18V6"></path>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title" data-uz="Oson daromad" data-ru="Легкий заработок">Oson daromad</h3>
+                        <p class="feature-description" data-uz="O'z kodingizni sotib, qo'shimcha daromad toping. Har bir sotuvdan to'g'ridan-to'g'ri to'lovlarni qabul qiling." data-ru="Зарабатывайте дополнительный доход, продавая свой код. Получайте прямые выплаты с каждой продажи.">O'z kodingizni sotib, qo'shimcha daromad toping. Har bir sotuvdan to'g'ridan-to'g'ri to'lovlarni qabul qiling.</p>
+                    </div>
+                    <div class="feature-card fade-in delay-1">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title" data-uz="Tezkor sotish" data-ru="Быстрые продажи">Tezkor sotish</h3>
+                        <p class="feature-description" data-uz="Telegram orqali tezkor va qulay sotish imkoniyati. Mijozlar bilan to'g'ridan-to'g'ri muloqot qiling va loyihalaringizni tezda soting." data-ru="Возможность быстрой и удобной продажи через Telegram. Общайтесь с клиентами напрямую и быстро продавайте свои проекты.">Telegram orqali tezkor va qulay sotish imkoniyati. Mijozlar bilan to'g'ridan-to'g'ri muloqot qiling va loyihalaringizni tezda soting.</p>
+                    </div>
+                    <div class="feature-card fade-in delay-2">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title" data-uz="Xavfsiz to'lovlar" data-ru="Безопасные платежи">Xavfsiz to'lovlar</h3>
+                        <p class="feature-description" data-uz="Ishonchli va xavfsiz to'lov tizimlari orqali daromad olish. Barcha tranzaksiyalar himoyalangan va shaffof." data-ru="Получайте доход через надежные и безопасные платежные системы. Все транзакции защищены и прозрачны.">Ishonchli va xavfsiz to'lov tizimlari orqali daromad olish. Barcha tranzaksiyalar himoyalangan va shaffof.</p>
+                    </div>
+                    <div class="feature-card fade-in delay-3">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                <path d="m9 12 2 2 4-4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title" data-uz="Intellektual mulk himoyasi" data-ru="Защита интеллектуальной собственности">Intellektual mulk himoyasi</h3>
+                        <p class="feature-description" data-uz="Kodingiz va intellektual mulkingiz to'liq himoyalangan. Litsenziyalash shartlarini o'zingiz belgilang." data-ru="Ваш код и интеллектуальная собственность полностью защищены. Устанавливайте условия лицензирования самостоятельно.">Kodingiz va intellektual mulkingiz to'liq himoyalangan. Litsenziyalash shartlarini o'zingiz belgilang.</p>
+                    </div>
+                    <div class="feature-card fade-in delay-4">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title" data-uz="Keng auditoriya" data-ru="Широкая аудитория">Keng auditoriya</h3>
+                        <p class="feature-description" data-uz="Telegram orqali keng auditoriyaga kirish imkoniyati. Mijozlar bazasini kengaytiring va ko'proq sotuvlarga erishing." data-ru="Доступ к широкой аудитории через Telegram. Расширяйте клиентскую базу и увеличивайте продажи.">Telegram orqali keng auditoriyaga kirish imkoniyati. Mijozlar bazasini kengaytiring va ko'proq sotuvlarga erishing.</p>
+                    </div>
+                    <div class="feature-card fade-in delay-5">
+                        <div class="feature-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                <polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline>
+                                <polyline points="7.5 19.79 7.5 14.6 3 12"></polyline>
+                                <polyline points="21 12 16.5 14.6 16.5 19.79"></polyline>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title" data-uz="Bepul ro'yxatdan o'tish" data-ru="Бесплатная регистрация">Bepul ro'yxatdan o'tish</h3>
+                        <p class="feature-description" data-uz="Platformada ro'yxatdan o'tish va kod joylashtirish mutlaqo bepul. Faqat sotuvdan keyin komissiya to'lanadi." data-ru="Регистрация и размещение кода на платформе абсолютно бесплатны. Комиссия взимается только после продажи.">Platformada ro'yxatdan o'tish va kod joylashtirish mutlaqo bepul. Faqat sotuvdan keyin komissiya to'lanadi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-it-works" id="how-it-works">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <div class="section-subtitle" data-uz="Jarayon" data-ru="Процесс">Jarayon</div>
+                    <h2 class="section-title" data-uz  data-ru="Процесс">Jarayon</div>
+                    <h2 class="section-title" data-uz="Qanday ishlaydi" data-ru="Как это работает">Qanday ishlaydi</h2>
+                    <p class="section-description" data-uz="Cooplink orqali kod sotish jarayoni juda oson va samarali" data-ru="Процесс продажи кода через Cooplink очень прост и эффективен">Cooplink orqali kod sotish jarayoni juda oson va samarali</p>
+                </div>
+                <div class="steps">
+                    <div class="step fade-in">
+                        <h3 class="step-title" data-uz="Ro'yxatdan o'ting" data-ru="Зарегистрируйтесь">Ro'yxatdan o'ting</h3>
+                        <p class="step-description" data-uz="Telegram bot orqali ro'yxatdan o'ting va profil yarating. Bu jarayon bir necha daqiqa vaqt oladi." data-ru="Зарегистрируйтесь через Telegram бот и создайте профиль. Этот процесс займет всего несколько минут.">Telegram bot orqali ro'yxatdan o'ting va profil yarating. Bu jarayon bir necha daqiqa vaqt oladi.</p>
+                    </div>
+                    <div class="step fade-in delay-1">
+                        <h3 class="step-title" data-uz="Kodingizni yuklang" data-ru="Загрузите свой код">Kodingizni yuklang</h3>
+                        <p class="step-description" data-uz="Sotmoqchi bo'lgan kodingizni yuklang va batafsil tavsif bering. Sifatli tavsif sotuvlarni oshiradi." data-ru="Загрузите код, который хотите продать, и добавьте подробное описание. Качественное описание увеличивает продажи.">Sotmoqchi bo'lgan kodingizni yuklang va batafsil tavsif bering. Sifatli tavsif sotuvlarni oshiradi.</p>
+                    </div>
+                    <div class="step fade-in delay-2">
+                        <h3 class="step-title" data-uz="Narx belgilang" data-ru="Установите цену">Narx belgilang</h3>
+                        <p class="step-description" data-uz="Kodingiz uchun mos narx belgilang. Narxni bozor talabiga qarab moslashtirishingiz mumkin." data-ru="Установите подходящую цену для вашего кода. Вы можете корректировать цену в зависимости от рыночного спроса.">Kodingiz uchun mos narx belgilang. Narxni bozor talabiga qarab moslashtirishingiz mumkin.</p>
+                    </div>
+                    <div class="step fade-in delay-3">
+                        <h3 class="step-title" data-uz="Daromad oling" data-ru="Получайте доход">Daromad oling</h3>
+                        <p class="step-description" data-uz="Kodingiz sotilganda daromadni to'g'ridan-to'g'ri oling. To'lovlar tez va xavfsiz amalga oshiriladi." data-ru="Получайте доход напрямую, когда ваш код продается. Выплаты производятся быстро и безопасно.">Kodingiz sotilganda daromadni to'g'ridan-to'g'ri oling. To'lovlar tez va xavfsiz amalga oshiriladi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="telegram-section" id="telegram">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <div class="section-subtitle" data-uz="Hamjamiyat" data-ru="Сообщество">Hamjamiyat</div>
+                    <h2 class="section-title" data-uz="Bizga qo'shiling" data-ru="Присоединяйтесь к нам">Bizga qo'shiling</h2>
+                    <p class="section-description" data-uz="Cooplink jamiyatiga qo'shiling va kod sotishni boshlang" data-ru="Присоединяйтесь к сообществу Cooplink и начните продавать код">Cooplink jamiyatiga qo'shiling va kod sotishni boshlang</p>
+                </div>
+                <div class="telegram-links">
+                    <div class="telegram-card fade-in">
+                        <div class="telegram-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="telegram-title" data-uz="Telegram Bot" data-ru="Телеграм Бот">Telegram Bot</h3>
+                        <p class="telegram-description" data-uz="Kod sotish uchun botimizdan foydalaning. Bot orqali ro'yxatdan o'ting, kod yuklang va sotuvlarni boshqaring." data-ru="Используйте нашего бота для продажи кода. Зарегистрируйтесь через бота, загрузите код и управляйте продажами.">Kod sotish uchun botimizdan foydalaning. Bot orqali ro'yxatdan o'ting, kod yuklang va sotuvlarni boshqaring.</p>
+                        <a href="https://t.me/cooplinkbot" class="telegram-link">
+                            <span>@cooplinkbot</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="telegram-card fade-in delay-1">
+                        <div class="telegram-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="telegram-title" data-uz="Telegram Kanal" data-ru="Телеграм Канал">Telegram Kanal</h3>
+                        <p class="telegram-description" data-uz="Yangiliklar va e'lonlardan xabardor bo'ling. Yangi imkoniyatlar va maxsus takliflarni birinchi bo'lib bilib oling." data-ru="Будьте в курсе новостей и объявлений. Первыми узнавайте о новых возможностях и специальных предложениях.">Yangiliklar va e'lonlardan xabardor bo'ling. Yangi imkoniyatlar va maxsus takliflarni birinchi bo'lib bilib oling.</p>
+                        <a href="https://t.me/cooplink" class="telegram-link">
+                            <span>@cooplink</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="telegram-card fade-in delay-2">
+                        <div class="telegram-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="telegram-title" data-uz="Telegram Chat" data-ru="Телеграм Чат">Telegram Chat</h3>
+                        <p class="telegram-description" data-uz="Jamiyat bilan muloqot qiling va savol bering. Boshqa dasturchilar bilan tajriba almashing va yangi aloqalar o'rnating." data-ru="Общайтесь с сообществом и задавайте вопросы. Обменивайтесь опытом с другими разработчиками и налаживайте новые связи.">Jamiyat bilan muloqot qiling va savol bering. Boshqa dasturchilar bilan tajriba almashing va yangi aloqalar o'rnating.</p>
+                        <a href="https://t.me/cooplink_chat" class="telegram-link">
+                            <span>@cooplink_chat</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="m12 5 7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo" aria-label="Cooplink homepage">
+                        <span>Cooplink</span>
+                    </a>
+                    <p class="footer-description" id="footerDesc" data-uz="Kod sotish uchun eng yaxshi marketplace. Professional dasturchilar uchun yaratilgan platforma." data-ru="Лучший маркетплейс для продажи кода. Платформа, созданная для профессиональных разработчиков.">Kod sotish uchun eng yaxshi marketplace. Professional dasturchilar uchun yaratilgan platforma.</p>
+                </div>
+                <div>
+                    <h4 class="footer-heading" id="linksTitle" data-uz="Foydali havolalar" data-ru="Полезные ссылки">Foydali havolalar</h4>
+                    <div class="footer-links">
+                        <a href="#features" class="footer-link" id="footerFeatures" data-uz="Imkoniyatlar" data-ru="Возможности">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            <span>Imkoniyatlar</span>
+                        </a>
+                        <a href="#how-it-works" class="footer-link" id="footerHow" data-uz="Qanday ishlaydi" data-ru="Как это работает">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            <span>Qanday ishlaydi</span>
+                        </a>
+                        <a href="#telegram" class="footer-link" id="footerTelegram" data-uz="Telegram" data-ru="Телеграм">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            <span>Telegram</span>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading" id="legalTitle" data-uz="Huquqiy" data-ru="Юридическая информация">Huquqiy</h4>
+                    <div class="footer-links">
+                        <a href="https://cop.abdulaziz.org.uz/privacy" class="footer-link" id="footerPrivacy" data-uz="Maxfiylik siyosati" data-ru="Политика конфиденциальности">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                            <span>Maxfiylik siyosati</span>
+                        </a>
+                        <a href="https://cop.abdulaziz.org.uz/terms" class="footer-link" id="footerTerms" data-uz="Foydalanish shartlari" data-ru="Условия использования">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <path d="M14 2v6h6"></path>
+                                <path d="M16 13H8"></path>
+                                <path d="M16 17H8"></path>
+                                <path d="M10 9H8"></path>
+                            </svg>
+                            <span>Foydalanish shartlari</span>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-heading" id="supportTitle" data-uz="Yordam" data-ru="Поддержка">Yordam</h4>
+                    <div class="footer-links">
+                        <a href="https://t.me/yordam_42" class="footer-link" id="footerSupport" data-uz="Yordam olish" data-ru="Получить помощь">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                <path d="M12 17h.01"></path>
+                            </svg>
+                            <span>Yordam olish</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-bottom">
+                <p id="copyright" data-uz="© 2025 Cooplink. Barcha huquqlar himoyalangan." data-ru="© 2025 Cooplink. Все права защищены.">© 2025 Cooplink. Barcha huquqlar himoyalangan.</p>
+                <div class="footer-legal">
+                    <a href="https://cop.abdulaziz.org.uz/privacy" class="footer-legal-link" data-uz="Maxfiylik" data-ru="Конфиденциальность">Maxfiylik</a>
+                    <a href="https://cop.abdulaziz.org.uz/terms" class="footer-legal-link" data-uz="Shartlar" data-ru="Условия">Shartlar</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const langElements = document.querySelectorAll('[data-uz][data-ru]');
+        
+        // Mobile Menu Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            const isExpanded = mainNav.classList.contains('active');
+            mainNav.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+            mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+            
+            // Prevent scrolling when menu is open
+            document.body.style.overflow = isExpanded ? '' : 'hidden';
+        });
+
+        // Language Switcher
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                
+                // Update active button
+                langButtons.forEach(b => {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-pressed', 'false');
+                });
+                btn.classList.add('active');
+                btn.setAttribute('aria-pressed', 'true');
+                
+                // Update language
+                langElements.forEach(el => {
+                    el.textContent = el.getAttribute(`data-${lang}`);
+                });
+                
+                // Update HTML lang attribute
+                document.documentElement.lang = lang;
+                
+                // Store language preference
+                localStorage.setItem('cooplink-lang', lang);
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        mobileMenuBtn.classList.remove('active');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                        document.body.style.overflow = '';
+                    }
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Initialize animations
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Load saved language preference
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('cooplink-lang');
+            if (savedLang) {
+                const langBtn = document.querySelector(`.lang-btn[data-lang="${savedLang}"]`);
+                if (langBtn) {
+                    langBtn.click();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
